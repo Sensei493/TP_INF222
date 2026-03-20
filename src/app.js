@@ -1,22 +1,24 @@
 const express = require('express');
-require('./config/db');
-
-const app = express();
-const articleRoutes = require('./routes/article.routes');
-app.use('/api', articleRoutes);
-
+const cors = require('cors');
+const bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./swagger/swagger');
 
+const app = express();
+
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-app.use(express.json());
-
+const articleRoutes = require('./routes/article.routes');
+app.use('/api', articleRoutes);
 
 app.get('/', (req, res) => {
-    res.send("Yo nigga mon serveur donne free ")
+    res.send('API Blog OK 🚀');
 });
 
 app.listen(3000, () => {
-    console.log("Le serveur tourne sur le port 3000")
+    console.log('Serveur lancé sur http://localhost:3000');
 });

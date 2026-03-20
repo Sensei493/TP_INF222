@@ -9,12 +9,10 @@ const options = {
             description: "API simple pour gérer des articles de blog",
         },
         servers: [
-            {
-                url: "http://localhost:3000/api",
-            },
+            { url: "http://localhost:3000/api" },
         ],
     },
-    apis: ["./src/routes/*.js"], // on va documenter les routes directement
+    apis: [__dirname + "/../routes/*.js"],
 };
 
 const swaggerSpec = swaggerJsdoc(options);

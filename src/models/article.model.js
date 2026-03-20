@@ -40,11 +40,11 @@ const Article = {
 
 
     update: (id, article, callback) => {
-        const { titre, contenu, categorie, tags } = article;
+        const { titre, contenu, auteur, date, categorie, tags } = article;
 
         db.run(
-            `UPDATE articles SET titre=?, contenu=?, categorie=?, tags=? WHERE id=?`,
-            [titre, contenu, categorie, tags, id],
+            `UPDATE articles SET titre=?, contenu=?, auteur=?, date=?, categorie=?, tags=? WHERE id=?`,
+            [titre, contenu, auteur, date, categorie, tags, id],
             function (err) {
                 callback(err, { changes: this.changes });
             }
