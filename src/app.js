@@ -5,6 +5,11 @@ const app = express();
 const articleRoutes = require('./routes/article.routes');
 app.use('/api', articleRoutes);
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./swagger/swagger');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 app.use(express.json());
 
 
