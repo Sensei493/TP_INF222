@@ -2,6 +2,8 @@ const express = require('express');
 require('./config/db');
 
 const app = express();
+const articleRoutes = require('./routes/article.routes');
+app.use('/api', articleRoutes);
 
 app.use(express.json());
 
