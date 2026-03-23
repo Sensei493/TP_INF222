@@ -16,7 +16,7 @@ const articleRoutes = require('./routes/article.routes');
 app.use('/api', articleRoutes);
 
 app.get('/', (req, res) => {
-    res.send('API Blog OK 🚀');
+    res.send('API Blog Operationnel');
 });
 
 app.listen(3000, () => {
